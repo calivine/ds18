@@ -16,10 +16,11 @@ def readChannel(channel):
 
 
 try:
+    print("start")
     while True:
         val = readChannel(0)
-        if val != 0:
-            print(val)
+        #if val != 0:
+        print(val)
         time.sleep(delay)
 
 except KeyboardInterrupt:
