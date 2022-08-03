@@ -1,6 +1,6 @@
 import sys
 
-from temp_sensor import Monitor
+from bucket_brain import Monitor
 
 
 def _real_main(argv=None):

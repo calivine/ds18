@@ -25,10 +25,10 @@ class Monitor:
                 # If moisture sensor is connected
                 if self.moisture_sensor is not None:
                     moisture = self.moisture_sensor.read_channel(0)
-                    print(moisture)
+                    print("Moisture level: {}".format(moisture))
                     moisture_output = "Moisture level: {}".format(moisture)
                     self.display.lcd_display_string(moisture_output, 2)
-                time.sleep(60)
+                time.sleep(10)
                 self.display.lcd_clear()
         except KeyboardInterrupt:
             pass
