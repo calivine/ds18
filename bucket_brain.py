@@ -7,13 +7,12 @@ from moisture_sensor import MoistureSensor
 
 class Monitor:
 
-    def __init__(self):
+    def __init__(self, moisture=True):
         self.sensor = DS18B20()
         self.display = I2C_LCD_driver.lcd()
-        self.moisture_sensor = MoistureSensor()
+        self.moisture_sensor = MoistureSensor() if moisture else None
         # Make list called sensors which holds each
         # sensor object.
-
 
     def activate(self):
         try:
@@ -24,9 +23,10 @@ class Monitor:
                 # Check if moisture sensor is connected
                 self.display.lcd_display_string(temp_output, 1)
                 # If moisture sensor is connected
-                moisture = self.moisture_sensor.read_channel(0)
-                moisture_output = "Moisture level: {}".format(str(moisture))
-                self.display.lcd_display_string(moisture_output, 2)
+                if self.moisture_sensor is not None:
+                    moisture = self.moisture_sensor.read_channel(0)
+                    moisture_output = "Moisture level: {}".format(str(moisture))
+                    self.display.lcd_display_string(moisture_output, 2)
                 time.sleep(60)
                 self.display.lcd_clear()
         except KeyboardInterrupt:
