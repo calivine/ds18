@@ -4,7 +4,7 @@ from bucket_brain import Monitor
 
 
 def _real_main(argv=None):
-    Monitor().activate()
+    Monitor(moisture=False).activate()
 
 
 def main(argv=None):
